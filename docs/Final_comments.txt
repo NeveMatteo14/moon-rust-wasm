@@ -1,0 +1,146 @@
+MoonRust
+James Oh (jo9347)
+Matthew DellaNeve (mjd6839)
+Renee Veit (rmv4506)
+
+Lua Interpreter
+
+
+**********************************************************************
+**********************************************************************
+
+Score: 70 / 70  (100.00%)
+
+Overall, an outstanding project.  One of the very best that I've seen
+in any of my courses with a project.
+
+
+15 / 15: correctness
+
+Everything seems to be working correctly.  Especially good to
+implement all of the correct semantics for `break`, `return`,
+`repeat`, closures and environment capture, and proper sharing of
+mutable values.
+
+Great collection of unit tests, for both parser and interpreter.
+
+15 / 15: style/design
+
+Excellent organization into separate modules.
+
+Good use of references and lifetimes to capture the relationships
+between the AST, Lua values, and the environment.
+
+Environments and values are a good use of `Rc` and `RefCell`, because
+the semantics of Lua has mutable sharing.
+
+A dozen or so `cargo clippy` warnings, mostly about explicit lifetimes
+that could be elided.
+
+An explicit enum for the "result" of a `Block` or `Statement` or
+`Expression` might better capture the distinctions between `return`
+and `break`.
+
+Why `LuaValue::clone_rc`, which should be equivalent to `<LuaValue as
+Clone>::clone` provided by` #[derive(Clone)]`?
+
+
+30 / 30: effort/accomplishment
+
+Excellent work; rated as "challenging".  The most ambitious of the
+Rust projects I've seen and accomplished a very robust and functional
+interpreter.  Great to get experience with `nom` and parser
+combinators.
+
+Excellent writeup.  Logs of good details and information about the
+evolution of the project.
+
+Also, quite a lot of code written (> 1800LoC/person, more than twice
+any other team).
+
+
+10 / 10: presentation
+
+Good presentation.  Nice to have a video demo.  Perhaps spent a bit
+too much time on the issues with left-recursion and parsing (which
+aren't unique to Rust or nom).  Discussion of environments is good.
+
+
+**********************************************************************
+**********************************************************************
+
+========================================================================================================================
+ Language                                                     Files        Lines         Code     Comments       Blanks
+========================================================================================================================
+ Rust                                                            13         6569         5673          261          635
+------------------------------------------------------------------------------------------------------------------------
+ ./moonrust/src/interpreter/expression.rs                                   2405         2068           92          245
+ ./moonrust/src/interpreter/statement.rs                                     984          875           52           57
+ ./moonrust/src/ast.rs                                                       458          426            1           31
+ ./moonrust/tests/interpreter.rs                                             292          245            7           40
+ ./moonrust/src/interpreter/environment.rs                                   212          154           26           32
+ ./moonrust/src/lib.rs                                                         4            4            0            0
+ ./moonrust/src/parser/statement.rs                                          650          561           27           62
+ ./moonrust/src/parser/expression.rs                                         480          415            1           64
+ ./moonrust/src/interpreter.rs                                               467          394           24           49
+ ./moonrust/src/parser/common.rs                                             248          219            3           26
+ ./moonrust/src/parser/util.rs                                               195          161           25            9
+ ./moonrust/src/parser.rs                                                    111           98            0           13
+ ./moonrust/src/main.rs                                                       63           53            3            7
+------------------------------------------------------------------------------------------------------------------------
+ Lua                                                             42          655          591            5           59
+------------------------------------------------------------------------------------------------------------------------
+ ./moonrust/assets/game_of_life.lua                                           77           72            0            5
+ ./moonrust/assets/rps.lua                                                    49           43            0            6
+ ./moonrust/assets/if_else.lua                                                40           36            0            4
+ ./moonrust/assets/calculator.lua                                             36           29            0            7
+ ./moonrust/assets/closure1.lua                                               33           31            0            2
+ ./moonrust/assets/simple_calculator.lua                                      27           18            5            4
+ ./moonrust/assets/local_func2.lua                                            25           21            0            4
+ ./moonrust/assets/function_def2.lua                                          24           21            0            3
+ ./moonrust/assets/donut.lua                                                  21           21            0            0
+ ./moonrust/assets/prime_checker.lua                                          19           18            0            1
+ ./moonrust/assets/object.lua                                                 18           14            0            4
+ ./moonrust/assets/function_env2.lua                                          18           17            0            1
+ ./moonrust/assets/fibonacci.lua                                              16           14            0            2
+ ./moonrust/assets/while_return.lua                                           13           11            0            2
+ ./moonrust/assets/fibonacci_fixed.lua                                        13           12            0            1
+ ./moonrust/assets/visibility.lua                                             12           12            0            0
+ ./moonrust/assets/table1.lua                                                 12           12            0            0
+ ./moonrust/assets/repeat_return.lua                                          12           11            0            1
+ ./moonrust/assets/nested_for_return.lua                                      12           11            0            1
+ ./moonrust/assets/local_func1.lua                                            12           11            0            1
+ ./moonrust/assets/arguments.lua                                              12            9            0            3
+ ./moonrust/assets/print_rows.lua                                             11           10            0            1
+ ./moonrust/assets/while_break.lua                                            10           10            0            0
+ ./moonrust/assets/memory_error.lua                                           10            9            0            1
+ ./moonrust/assets/repeat_break.lua                                            9            9            0            0
+ ./moonrust/assets/multiple_return.lua                                         9            7            0            2
+ ./moonrust/assets/nested_for.lua                                              9            9            0            0
+ ./moonrust/assets/function_def1.lua                                           9            8            0            1
+ ./moonrust/assets/for_return.lua                                              9            9            0            0
+ ./moonrust/assets/factorial.lua                                               9            8            0            1
+ ./moonrust/assets/prob2.lua                                                   8            8            0            0
+ ./moonrust/assets/function_env.lua                                            8            8            0            0
+ ./moonrust/assets/table2.lua                                                  7            7            0            0
+ ./moonrust/assets/prob3.lua                                                   7            7            0            0
+ ./moonrust/assets/for_break.lua                                               7            7            0            0
+ ./moonrust/assets/prob5.lua                                                   6            6            0            0
+ ./moonrust/assets/prob4.lua                                                   5            5            0            0
+ ./moonrust/assets/prob1.lua                                                   5            5            0            0
+ ./moonrust/assets/function.lua                                                5            4            0            1
+ ./moonrust/assets/echo.lua                                                    5            5            0            0
+ ./moonrust/assets/simple.lua                                                  3            3            0            0
+ ./moonrust/assets/for_numeral.lua                                             3            3            0            0
+------------------------------------------------------------------------------------------------------------------------
+ Markdown                                                         1          375            0          258          117
+------------------------------------------------------------------------------------------------------------------------
+ ./README.md
+ ./README.md                                                                 375            0          258          117
+------------------------------------------------------------------------------------------------------------------------
+ TOML                                                             1           11            8            1            2
+------------------------------------------------------------------------------------------------------------------------
+ ./moonrust/Cargo.toml                                                        11            8            1            2
+========================================================================================================================
+ Total                                                           57         7610         6272          525          813
+========================================================================================================================
