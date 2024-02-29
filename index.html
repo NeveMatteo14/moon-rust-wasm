@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -8,38 +8,58 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous" />
+            crossorigin="anonymous"
+        />
         <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="index.css" />
 
         <title>MoonRust</title>
     </head>
 
-    <body>
+    <body class="mx-sm-5 mx-2">
         <script type="module" src="index.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"
+        ></script>
 
         <div class="d-flex flex-column justify-content-center m-3">
             <h1 class="text-center">MoonRust</h1>
 
+            <p>
+                This is lorem ipsum dolor sit amet. This is lorem ipsum dolor sit amet. This is
+                lorem ipsum dolor sit amet. This is lorem ipsum dolor sit amet.
+            </p>
+
             <textarea class="form-control mb-3" id="codeInput" rows="15"></textarea>
             <button class="btn btn-primary" type="button" id="submitButton">Execute</button>
 
-            <hr class="my-5" />
+            <hr class="my-4" />
 
-            <div class="spinner-border d-none" role="status" id="loading">
+            <h2 class="mb-3">Results:</h2>
+            <div class="spinner-border d-none text-center" role="status" id="loading">
                 <span class="visually-hidden">Loading...</span>
             </div>
-
-            <div class="d-none" id="interpreterOutput">
-                <h2>Results:</h2>
-                <pre><code id="codeOutput">
-                        Your results here!
-                    </code></pre>
+            <div
+                class="d-none rounded border p-2"
+                style="overflow-x: hidden; overflow-y: auto; max-height: 500px"
+                id="interpreterOutput"
+            >
+                <pre class="m-0"><p class="m-0 font-monospace" id="outputText">
+                    Your results will be displayed here.
+                </p></pre>
             </div>
         </div>
     </body>
