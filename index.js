@@ -9,15 +9,14 @@ let interpreter = new Worker("worker.js", { type: "module" });
 
 // After interpreter finishes, update program output
 interpreter.onmessage = (event) => {
-  outputText.textContent = event.data;
-  interpreterOutput.classList.remove("d-none");
   loadingIcon.classList.add("d-none");
-};
-interpreter.onerror = (error) => {
-  console.error(error.message);
-  outputText.textContent = error.message;
-  loadingIcon.classList.add("d-none");
-  interpreterOutput.classList.add("text-bg-danger");
+
+  if (event.data.success) {
+    outputText.textContent = event.data.result;
+  } else {
+    outputText.textContent = event.data.err;
+    interpreterOutput.classList.add("text-bg-danger");
+  }
   interpreterOutput.classList.remove("d-none");
 };
 

@@ -19,6 +19,15 @@ async function run() {
 }
 
 // Call the interpreter when requested
-onmessage = (event) => postMessage(interpret(event.data));
+// onmessage = (event) => postMessage(interpret(event.data));
+
+onmessage = (event) => {
+  try {
+    const result = interpret(event.data);
+    postMessage({ success: true, result });
+  } catch (err) {
+    postMessage({ success: false, err });
+  }
+};
 
 run();
