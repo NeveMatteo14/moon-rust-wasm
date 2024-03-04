@@ -371,7 +371,8 @@ impl Block {
             if return_vals.is_none() {
                 // Break statement
                 return Ok(None);
-            } else if let Some(return_vals) = return_vals {
+            }
+            if let Some(return_vals) = return_vals {
                 if !return_vals.is_empty() {
                     // Return statement inside statement list
                     return Ok(Some(return_vals));

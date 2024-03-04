@@ -55,18 +55,6 @@ impl<'a> LocalEnv<'a> {
         None
     }
 
-    // pub fn get_mut(&mut self, name: &str) -> Option<&mut LuaValue<'a>> {
-    //     // Search in reversed order to check current scope first
-    //     for table in self.0.iter_mut().rev() {
-    //         for (var_name, var) in table.0.iter_mut() {
-    //             if var_name == name {
-    //                 return Some(var);
-    //             }
-    //         }
-    //     }
-    //     None
-    // }
-
     pub fn extend_env(&mut self) {
         self.0.push(None);
         self.0.push(Some(EnvTable::new()));
@@ -207,9 +195,3 @@ impl<'a> Env<'a> {
         new_env
     }
 }
-
-// impl<'a> Default for Env<'a> {
-//     fn default() -> Self {
-//         Self::new()
-//     }
-// }
